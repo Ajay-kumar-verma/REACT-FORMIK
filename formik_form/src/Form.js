@@ -3,14 +3,10 @@ import { useEffect } from 'react';
 import { useFormik } from 'formik';
 
  const Form = () => {
-    const initialValues= {
-    firstName: '',
-    lastName: 'kumar',
-    email: 'aja',
-  }
 
-  const  onSubmit= values => {
-    alert(JSON.stringify(values, null, 2));
+  const initialValues={firstName: '',lastName: 'kumar',email: ''};
+  const onSubmit= values => {alert(JSON.stringify(values));
+   console.log("main formik ",formik)
   }
 
 const validate=(values)=>{
@@ -20,8 +16,9 @@ const errors= {};
 if(values.firstName==="") 
   errors["firstName"]="Fill kr de bhai ";
 
- return errors;
+  return errors;
   }
+
   const formik = useFormik({initialValues,onSubmit,validate});
 // formik return all object we need to manipluate the form 
 //   in formik.Values all values contain  
@@ -29,12 +26,12 @@ if(values.firstName==="")
 // it validate and make errors objec also 
 console.log("form values ",formik.values);
 console.log("Touched  values ",formik.touched);
+
 useEffect(()=>{
     console.log("Formik returned object ",formik)
 },[formik])
 
 // whenever make anychange in the form this above part gets executed 
-
 
   return (
     <form onSubmit={formik.handleSubmit}>
