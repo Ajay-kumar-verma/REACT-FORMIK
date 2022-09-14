@@ -11,8 +11,10 @@ import { useFormik } from 'formik';
 
 const validate=(values)=>{
 // it keep tracking the data and used for setting the errors 
-// console.log("ajay klumar verma")
 const errors= {};
+// it is not inbuilt 
+// so  we have to modify the error Object with custom error message
+   
 if(values.firstName==="") 
   errors["firstName"]="Fill kr de bhai ";
 
